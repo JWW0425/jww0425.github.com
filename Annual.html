@@ -39,16 +39,8 @@
       /* navigate button width*/
       @media (min-width: 768px){ .nav.navbar-nav>li{ width: 110px; text-align: center; } }
       /* navigate button color (hover/active)*/
-      .navbar-inverse .navbar-nav>.homeBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.homeBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.portfolioBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.portfolioBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.aboutBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.aboutBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.contactBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.contactBottom.active>a{ background-color: #64ABDA; }
-      /* in case there is Chinese characters */
-      .chinese{ font-family: 微软雅黑, serif; }
+      .navbar-inverse .navbar-nav>.navButton>a:hover{ background-color: #64ABDA; }
+      .navbar-inverse .navbar-nav>.navButton.active>a{ background-color: #64ABDA; }
 
       /* slideDown logo */
       .myFlagContainer{ display: none; position: fixed; width: 100%; z-index: 1030; }
@@ -74,7 +66,7 @@
       .introContent{ text-indent: 2rem; }
       .overview{ float: left; margin-right: 5%; margin-top: 1%; }
       .overview>div{ margin-top: 12px; }
-      .overviewIcon{  display: inline-block; height: 20px; width: 5px; background-color:#64ABDA; margin-bottom:-3px; margin-right: 3px; }
+      .overviewIcon{ display: inline-block; height: 20px; width: 5px; background-color:#64ABDA; margin-bottom:-3px; margin-right: 3px; }
       .overviewTitle{ display: inline-block; }
       .overviewContent{ margin-left: 12px; margin-top: 10px; font-style: italic; font-size: 0.9rem; }
       .overviewContent.indent{ margin-left:40px; }
@@ -101,7 +93,7 @@
       @media (max-width: 1217px) {
         .forTheFuture p{ width: 100%; }
       }
-      .annualDownload { float: left; height: 40px; width: 200px; line-height:40px; text-align:center; background: #64ABDA; margin-top: 10px; margin-bottom: 10px; }
+      .annualDownload { float: left; height: 40px; width: 185px; line-height:40px; text-align:center; background: #64ABDA; margin-top: 10px; margin-bottom: 10px; }
       .annualDownload a{ color: white; font-size: 0.95rem; }
       .annualDownload a:hover{ text-decoration: none; font-weight: bold; font-size: 1rem; }
       .futureTitleNumber{ display: inline-block; font-size: 2.5rem; font-weight: bold; color: #64ABDA; margin-right: 10px; }
@@ -143,16 +135,16 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="homeBottom">
+            <li class="navButton">
               <a href="index.html#home" >Home</a>
             </li>
-            <li class="portfolioBottom">
+            <li class="navButton">
               <a href="index.html#portfolio">Portfolio</a>
             </li>
-            <li class="aboutBottom">
+            <li class="navButton">
               <a href="index.html#about">About Me</a>
             </li>
-            <li class="contactBottom">
+            <li class="navButton">
               <a href="index.html#contact">Contact</a>
             </li>
           </ul>
@@ -218,14 +210,14 @@
       <div class="sectTitle">PREPARE MATERIALS</div>
       <div class="sectContent">
         It took us two months to collect all kinds of materials including articles, photos
-        and then proofread all the articles and processed all the photos using Photoshop.
+        and then proofread all the articles and processed all the photos using PhotoShop.
       </div>
     </div>
 
     <div class="sect">
       <div class="sectTitleNumber">2</div>
       <div class="sectTitle">THE DESIGN.</div>
-      <div class="sectContent">I designed the annual using <i>Indesign</i> based on all the materials prepared before hand.</div>
+      <div class="sectContent">I designed the annual using <i>InDesign</i> based on all the materials prepared before hand.</div>
       <a href="img/Annual/Cover.jpg" target="_blank"><img class="shadow" src="img/Annual/Cover.jpg" alt="Cover" /></a>
       <a href="img/Annual/Timeline.jpg" target="_blank"><img class="shadow" src="img/Annual/Timeline.jpg" alt="Timeline" /></a>
       <a href="img/Annual/Preface.jpg" target="_blank"><img class="shadow" src="img/Annual/Preface.jpg" alt="Preface" /></a>
@@ -255,7 +247,7 @@
       <p class="futureContent">
         It has attracted 275 new members to join us this semester and a new journey is waiting ahead of them.
       </p>
-      <div class="annualDownload"><a href="Home.html">Download the Annual</a></div>
+      <div class="annualDownload"><a href="test.html">Download the Annual</a></div>
       <div class="clearFloat"></div>
     </div>
 
@@ -287,10 +279,6 @@
         //show/hide .myFlagContainer
         $(".myName img").mouseover(function (e) {
           e.preventDefault();
-          //alert( $(window).width() );
-          //alert($(document).scrollTop());
-          //alert($(document).height());
-          //alert($(window).height());
           if( $(window).width() > 1183) {
             $(".myFlagContainer").slideDown();
           }
@@ -308,6 +296,14 @@
             $("a.backToTop").slideDown();
           }
           else if( $(document).scrollTop() == 0 && $(window).width() > 975 ){
+            $("a.backToTop").slideUp();
+          }
+        });
+
+        //in case someone change the size of window when a.backToTop is in 'slideDown' status
+        $(window).resize(function(e){
+          e.preventDefault();
+          if( $(document).scrollTop() > 0 && $(window).width() <= 975 ){
             $("a.backToTop").slideUp();
           }
         });

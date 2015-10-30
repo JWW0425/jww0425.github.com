@@ -39,16 +39,8 @@
       /* navigate button width*/
       @media (min-width: 768px){ .nav.navbar-nav>li{ width: 110px; text-align: center; } }
       /* navigate button color (hover/active)*/
-      .navbar-inverse .navbar-nav>.homeBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.homeBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.portfolioBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.portfolioBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.aboutBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.aboutBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.contactBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.contactBottom.active>a{ background-color: #64ABDA; }
-      /* in case there is Chinese characters */
-      .chinese{ font-family: 微软雅黑, serif; }
+      .navbar-inverse .navbar-nav>.navButton>a:hover{ background-color: #64ABDA; }
+      .navbar-inverse .navbar-nav>.navButton.active>a{ background-color: #64ABDA; }
 
       /* slideDown logo */
       .myFlagContainer{ display: none; position: fixed; width: 100%; z-index: 1030; }
@@ -128,16 +120,16 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="homeBottom">
+            <li class="navButton">
               <a href="index.html#home" >Home</a>
             </li>
-            <li class="portfolioBottom">
+            <li class="navButton">
               <a href="index.html#portfolio">Portfolio</a>
             </li>
-            <li class="aboutBottom">
+            <li class="navButton">
               <a href="index.html#about">About Me</a>
             </li>
-            <li class="contactBottom">
+            <li class="navButton">
               <a href="index.html#contact">Contact</a>
             </li>
           </ul>
@@ -404,10 +396,6 @@
         //show/hide .myFlagContainer
         $(".myName img").mouseover(function (e) {
           e.preventDefault();
-          //alert( $(window).width() );
-          //alert($(document).scrollTop());
-          //alert($(document).height());
-          //alert($(window).height());
           if( $(window).width() > 1183) {
             $(".myFlagContainer").slideDown();
           }
@@ -425,6 +413,14 @@
             $("a.backToTop").slideDown();
           }
           else if( $(document).scrollTop() == 0 && $(window).width() > 975 ){
+            $("a.backToTop").slideUp();
+          }
+        });
+
+        //in case someone change the size of window when a.backToTop is in 'slideDown' status
+        $(window).resize(function(e){
+          e.preventDefault();
+          if( $(document).scrollTop() > 0 && $(window).width() <= 975 ){
             $("a.backToTop").slideUp();
           }
         });

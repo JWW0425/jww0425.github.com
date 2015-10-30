@@ -42,16 +42,8 @@
       /* navigate button width*/
       @media (min-width: 768px){ .nav.navbar-nav>li{ width: 110px; text-align: center; } }
       /* navigate button color (hover/active)*/
-      .navbar-inverse .navbar-nav>.homeBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.homeBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.portfolioBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.portfolioBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.aboutBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.aboutBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.contactBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.contactBottom.active>a{ background-color: #64ABDA; }
-      /* in case there is Chinese characters */
-      .chinese{ font-family: 微软雅黑, serif; }
+      .navbar-inverse .navbar-nav>.navButton>a:hover{ background-color: #64ABDA; }
+      .navbar-inverse .navbar-nav>.navButton.active>a{ background-color: #64ABDA; }
 
       /* slideDown logo */
       .myFlagContainer{ display: none; position: fixed; width: 100%; z-index: 1030; }
@@ -75,7 +67,6 @@
       .myContainer{ width: 100%; }
 
       .homePage{ position: relative; width: 100%; }
-      /*.homePageImg{ position: fixed; z-index: 0; }*/
       .homePageText{ color: white; opacity: 0; position: relative; padding: 12% 8.5% 60% 8.5%; font-family: 'Century Gothic',serif; font-size: 1rem; font-weight: 100; }
       .homePageText .welcome{ font-family:'Lucida Handwriting', serif; font-weight:normal; font-size: 2.5rem; margin-bottom: 20px; }
       .pkuLink a{ text-decoration: none; color: #64ABDA; }
@@ -86,11 +77,8 @@
       .workWrapper{ width: 100%; padding: 3% 8.5% 60% 8.5%; }
       .row { margin-left: 0; margin-right: 0; }
       .myWork { height: 100%;  padding: 10px; position: relative; }
-      .myWork a { text-decoration: none; color: #313131; }
+      .myWork a { position: relative; display:block; width: 100%; height: 100%; text-decoration: none; color: #313131; }
       .myWork img{ width: 100%; }
-      /*.myWork img:hover{ border: 5px transparent solid; }*/
-      .myWork .workContent{ font-size: 0.84rem; }
-      .myWork a { position: relative; display:block; width: 100%; height: 100%; }
       .workCover{ position: absolute; opacity: 0; background-color: white;  left: 0; top: 0; width: 100%; height: 100%; padding-top: 33%; }
       .workCover .workTitle{ text-align: center; font-weight: bold; font-size: 1.4rem; }
       .workCover .workDescript{ width: 90%; margin: auto auto; font-size: 1rem; text-align: center; }
@@ -151,16 +139,16 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="homeBottom active">
+            <li class="navButton active">
               <a href="#home" >Home</a>
             </li>
-            <li class="portfolioBottom">
+            <li class="navButton">
               <a href="#portfolio">Portfolio</a>
             </li>
-            <li class="aboutBottom">
+            <li class="navButton">
               <a href="#about">About Me</a>
             </li>
-            <li class="contactBottom">
+            <li class="navButton">
               <a href="#contact">Contact</a>
             </li>
           </ul>
@@ -309,6 +297,7 @@
           var href = $(this).children("a").attr("href");
           var pos = $(href).offset().top;
           $("html,body").animate({scrollTop: pos},650);
+          $(this).removeClass("active"); //to make sure that only one button is active (myScrollspy)
         });
 
         //slide to the top
@@ -322,10 +311,6 @@
         //show/hide .myFlagContainer
         $(".myName img").mouseover(function (e) {
           e.preventDefault();
-          //alert( $(window).width() );
-          //alert($(document).scrollTop());
-          //alert($(document).height());
-          //alert($(window).height());
           if( $(window).width() > 1183) {
             $(".myFlagContainer").slideDown();
           }
@@ -342,7 +327,6 @@
           var c = ($(document).scrollTop() / ($(document).height() - $(window).height()));
           var opa = ((-4) * c * c) + (4 * c);
           var leftPos = c * 100;
-          //var topPos = (0.042239*leftPos*leftPos) - (3.8995*leftPos) + 90;
           var topPos = (0.011733*leftPos*leftPos) - (1.0832*leftPos) + 90;
           $(".sunImg").css({"left": leftPos + "%", "top": topPos + "%"});
           $(".bgColor").css({"opacity": opa});
@@ -354,15 +338,6 @@
           }
         });
 
-        /*
-        $('#myScrollspy').on('activate.bs.scrollspy', function () {
-          var currentItem = $(".nav li.active > a").text();
-          if( currentItem == ""){
-
-          }
-        });
-        */
-
         //in case someone change the size of window when a.backToTop is in 'slideDown' status
         $(window).resize(function(e){
           e.preventDefault();
@@ -371,25 +346,22 @@
           }
         });
 
-      });
+        $(".workCover").mouseover(function(e){
+          e.preventDefault();
+          $(this).css({"opacity": "0.8"});
+        }).mouseout(function(e){
+          e.preventDefault();
+          $(this).css({"opacity": "0"});
+        });
 
-      /*
-      $(".contact-list i").mouseover(function(e){
-        e.preventDefault();
-        $(this).removeClass("fa-4x");
-        $(this).addClass("fa-5x");
-      }).mouseout(function(e){
-        e.preventDefault();
-        $(this).removeClass("fa-5x");
-        $(this).addClass("fa-4x");
-      });*/
+        /*
+         $('#myScrollspy').on('activate.bs.scrollspy', function () {
+         var currentItem = $(".nav li.active > a").text();
+         if( currentItem == ""){
 
-      $(".workCover").mouseover(function(e){
-        e.preventDefault();
-        $(this).css({"opacity": "0.8"});
-      }).mouseout(function(e){
-        e.preventDefault();
-        $(this).css({"opacity": "0"});
+         }
+         });
+         */
       });
 
     </script>

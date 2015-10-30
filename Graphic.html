@@ -39,16 +39,8 @@
       /* navigate button width*/
       @media (min-width: 768px){ .nav.navbar-nav>li{ width: 110px; text-align: center; } }
       /* navigate button color (hover/active)*/
-      .navbar-inverse .navbar-nav>.homeBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.homeBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.portfolioBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.portfolioBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.aboutBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.aboutBottom.active>a{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.contactBottom>a:hover{ background-color: #64ABDA; }
-      .navbar-inverse .navbar-nav>.contactBottom.active>a{ background-color: #64ABDA; }
-      /* in case there is Chinese characters */
-      .chinese{ font-family: 微软雅黑, serif; }
+      .navbar-inverse .navbar-nav>.navButton>a:hover{ background-color: #64ABDA; }
+      .navbar-inverse .navbar-nav>.navButton.active>a{ background-color: #64ABDA; }
 
       /* slideDown logo */
       .myFlagContainer{ display: none; position: fixed; width: 100%; z-index: 1030; }
@@ -127,16 +119,16 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="homeBottom">
+            <li class="navButton">
               <a href="index.html#home" >Home</a>
             </li>
-            <li class="portfolioBottom">
+            <li class="navButton">
               <a href="index.html#portfolio">Portfolio</a>
             </li>
-            <li class="aboutBottom">
+            <li class="navButton">
               <a href="index.html#about">About Me</a>
             </li>
-            <li class="contactBottom">
+            <li class="navButton">
               <a href="index.html#contact">Contact</a>
             </li>
           </ul>
@@ -163,7 +155,7 @@
       <p class="introContent">
         Design to me is like a game, it is so subtle that by simply changing a part of color one is able to bring a huge difference on the whole picture.
         I was the minister of propaganda department of CAPU ( Cycling Association of Peking University) and our department is in charge of graphic design of all kinds of advertising materials including posters, flash, roll screen and T-shirt.
-        I learned Photoshop by my self and I'm amazed by how flexible this tool can be.
+        I learned PhotoShop by my self and I'm amazed by how flexible this tool can be.
       </p>
       <p class="introContent">
         I have designed several things, some for the propaganda department and some just for fun. And I am eager to learn more, about the magic color and fantastic layout of elements.
@@ -182,13 +174,13 @@
       <div class="sectTitleNumber">1</div>
       <div class="sectTitle">TOOL</div>
       <div class="sectContent">
-        I used Photoshop as the tool to design.
+        I used PhotoShop as the tool to design.
       </div>
     </div>
 
     <div class="sect">
       <div class="sectTitleNumber">2</div>
-      <div class="sectTitle">THE DESIGN.</div>
+      <div class="sectTitle">THE DESIGN</div>
       <div class="sectContentTitle">Poster of Summer Exchange Meeting of CAPU, 2013</div>
       <a href="img/Graphic/Summer.jpg" target="_blank"><img class="shadow" src="img/Graphic/Summer.jpg" alt="Poster" /></a>
       <div class="sectContentTitle">Landing Page of BBS of Peking University, 2014</div>
@@ -242,10 +234,6 @@
         //show/hide .myFlagContainer
         $(".myName img").mouseover(function (e) {
           e.preventDefault();
-          //alert( $(window).width() );
-          //alert($(document).scrollTop());
-          //alert($(document).height());
-          //alert($(window).height());
           if( $(window).width() > 1183) {
             $(".myFlagContainer").slideDown();
           }
@@ -263,6 +251,14 @@
             $("a.backToTop").slideDown();
           }
           else if( $(document).scrollTop() == 0 && $(window).width() > 975 ){
+            $("a.backToTop").slideUp();
+          }
+        });
+
+        //in case someone change the size of window when a.backToTop is in 'slideDown' status
+        $(window).resize(function(e){
+          e.preventDefault();
+          if( $(document).scrollTop() > 0 && $(window).width() <= 975 ){
             $("a.backToTop").slideUp();
           }
         });
