@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- these 3 meta tags must be put in the front -->
+    <meta name="description" content="Yunting Liu's website">
+    <meta name="author" content="Yunting Liu">
+
+    <title>GPX Trade - Yunting Liu</title>
+    <link rel="shortcut icon" href="img/logo2.jpg">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style type="text/css">
+      html{ font-size: 100%; }
+      body { position: relative; padding-top: 50px; font-family: 'Century Gothic', serif; font-size: 1rem; line-height: 170%; }
+
+      /* loading animation */
+      #loading{ display: none; width: 100%; height: 100%; background-color: white; z-index: 100000; position: fixed; }
+      .spinner{ width: 60px;
+        height: 60px;
+        background-color: #2ca6e0;
+        margin: 240px auto;
+        -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+        animation: rotateplane 1.2s infinite ease-in-out; }
+
+      /*.container{padding-right: 0; padding-left:0; margin-right: 10%; margin-left: 10%;}*/
+      .navbar{ border: 0; margin-bottom: 0; }
+      .myName{  padding:0 16px; }
+      .myName img{ height: 50px; }
+      /* center the navigate button */
+      @media (min-width: 768px){ .container>.navbar-collapse { width:440px; margin: 0 auto; } }
+      .navbar-inverse{ background-color: #313131; }
+      .navbar-inverse .navbar-nav>li>a { color: white; }
+      /* navigate button width*/
+      @media (min-width: 768px){ .nav.navbar-nav>li{ width: 110px; text-align: center; } }
+      /* navigate button color (hover/active)*/
+      .navbar-inverse .navbar-nav>.navButton>a:hover{ background-color: #64ABDA; }
+      .navbar-inverse .navbar-nav>.navButton.active>a{ background-color: #64ABDA; }
+
+      /* slideDown logo */
+      .myFlagContainer{ display: none; position: fixed; width: 100%; z-index: 1030; }
+      .myFlag{ padding-right: 15px;  padding-left: 8px; margin:0 auto; }
+      /*@media(min-width: 768px){ .myFlag { width: 750px } }
+      @media(min-width: 992px){ .myFLag { width: 970px } }*/
+      @media(min-width: 1200px){ .myFlag { width: 1170px } }
+      /*.myFlag img{ box-shadow: 1px 2px 1px 1px rgb(56, 92, 105); }*/
+
+      /* background and the sun ^_^(fixed) */
+      .bg{ position: fixed; width: 100%; height: 100%; z-index: 0; opacity: 0.5; background: url(img/sky3.jpg) no-repeat center center; -webkit-background-size:cover; -moz-background-size:cover; -o-background-size:cover; background-size:cover; }
+
+      .backToTop{ display: none; position: fixed; bottom: 5%; right: 5%; z-index: 1030; width: 50px; height: 50px; background-color: #313131; color: white; font-family: 'Century Gothic', serif; font-size: 1rem; text-align: center; line-height: 50px; opacity: 0.5; }
+      a.backToTop { text-decoration:  none; color: white; }
+      a.backToTop:hover{ opacity: 1; color: white; }
+
+      .Cover{ position: relative; width: 100%; height: 600px; z-index: 0; background: url(img/GPX/GPXCover.jpg) no-repeat center center; -webkit-background-size:cover; -moz-background-size:cover; -o-background-size:cover; background-size:cover;}
+      .darkCover{ position: absolute; opacity: 0.5; z-index: 1; background-color: black; width: 100%; height: 100%; }
+      .coverTitle{ position: absolute; z-index: 2; color: white; font-size: 2rem; font-style: italic; text-align: center; width: 100%; top: 45%; }
+
+      .intro{ position: relative; padding:3% 25% 3% 25%; }
+      .introTitle{ text-align: center; font-family: 'Lucida Handwriting', serif; font-size: 2rem; opacity: 1; margin-bottom: 5%; }
+      .introContent{ text-indent: 2rem; }
+      .overview{ float: left; margin-right: 5%; margin-top: 1%; }
+      .overview>div{ margin-top: 12px; }
+      .overviewIcon{ display: inline-block; height: 20px; width: 5px; background-color:#64ABDA; margin-bottom:-3px; margin-right: 3px; }
+      .overviewTitle{ display: inline-block; }
+      .overviewContent{ margin-left: 12px; margin-top: 10px; margin-bottom: 10px; font-style: italic; font-size: 0.9rem; }
+      .overviewContent.indent{ margin-left:40px; }
+      .clearFloat{ clear: both;}
+
+      .sect { position: relative; padding:3% 25% 3% 25%; }
+      .sect.grey{ background-color: #f4f4f4; }
+      .sectTitleNumber{ display: inline-block; font-size: 2.5rem; font-weight: bold; color: #64ABDA; margin-right: 10px; }
+      .sectTitle{ display: inline-block; font-size: 1.4rem; margin-bottom: 20px; }
+      .sectContent{ margin-top: 10px; margin-bottom: 10px; }
+      .sectContent.space{ margin-top: 50px; }
+      .sectContent i { color: #64ABDA; }
+      .sect video{ margin-top: 10px; margin-bottom: 10px; }
+      .sect iframe{ margin-top: 10px; margin-bottom: 10px; }
+      .sect .tip { font-size: 0.9rem; }
+      .sect .tip a { text-decoration: none; color:#64ABDA;  }
+      .sect img{ width: 100%; margin-top: 10px; margin-bottom: 10px; }
+      .sect img.shadow{ box-shadow: 2px 2px 7px 0 #909090; }
+      .sectContentTitle{  width: 100%; text-align: center; font-weight: bold;  margin-top: 50px; margin-bottom: 10px; }
+
+      #footer{ position: relative; background-color:#313131; padding: 5% 20% 4% 20%; color: white; text-align: center; }
+      #copyright { color: grey;}
+      .footerPre{ position: absolute; color: white; left: 2%; top: 5%; }
+      .footerNext{ position: absolute; color: white; right: 2%; top: 5%; }
+      #footer a:hover{ font-weight: bold; }
+
+
+    </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="top" style="overflow:scroll;overflow-x:hidden" >
+
+    <div id="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="myName navbar-brand" href="index.html"><img src="img/myName1.png" alt="Yunting Liu"></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="navButton">
+              <a href="index.html#home" >Home</a>
+            </li>
+            <li class="navButton">
+              <a href="index.html#portfolio">Portfolio</a>
+            </li>
+            <li class="navButton">
+              <a href="index.html#about">About Me</a>
+            </li>
+            <li class="navButton">
+              <a href="index.html#contact">Contact</a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="myFlagContainer">
+      <div class="myFlag">
+        <img src="img/logo2.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="bg"></div>
+
+    <a class="backToTop" href="#top" >TOP</a>
+
+    <div class="Cover">
+      <div class="coverTitle">Quantitative strategies for everyone.</div>
+      <div class="darkCover"></div>
+    </div>
+
+    <div class="intro">
+      <p class="introTitle">GPX Trade</p>
+      <p class="introContent">
+        This is a website for quantitative investing. Typically, quantitative investing is implemented by people who have spent time in the physics, math, computer science, or statistics
+         disciplines. What GPX does is to provide everyone equal chance to do quantitative investing even he or she had no experience in math or
+        computer science. By simply putting in basic information to generate a strategy or by buying strategies in the strategy pool, user can obtain
+        the proper strategy, moreover, user can sell those strategies which had good performance.
+      </p>
+      <p class="introContent">
+        I joined GPX Trade in September, 2015 as designer. I worked together with the team to improve and perfect the website.
+      </p>
+      <div class="overview">
+        <div>
+          <div class="overviewIcon"></div>
+          <div class="overviewTitle"><b>TIME SPAN</b></div>
+          <div class="overviewContent">- 4 Months</div>
+        </div>
+        <div>
+          <div class="overviewIcon"></div>
+          <div class="overviewTitle"><b>MY ROLE</b></div>
+          <div class="overviewContent">- Lead designer</div>
+          <div class="overviewContent indent">Responsible for the design and improve of all the web pages. Also in charge of the design of publicity materials such as business card and pamphlet.</div>
+        </div>
+        <div>
+          <div class="overviewIcon"></div>
+          <div class="overviewTitle"><b>I WORKED WITH</b></div>
+          <div class="overviewContent">- Tieqi Wang ( CEO )</div>
+          <div class="overviewContent">- Xingyan Bing ( CTO )</div>
+          <div class="overviewContent">- Qin NAN ( technical director )</div>
+          <div class="overviewContent">- Shan SHAN ( back-end engineer )</div>
+          <div class="overviewContent">- Ling DONG ( font-end developer )</div>
+        </div>
+      </div>
+      <div class="clearFloat"></div>
+    </div>
+
+    <div class="sect grey">
+      <div class="sectTitleNumber">1</div>
+      <div class="sectTitle">THE OPPORTUNITIES</div>
+      <div class="sectContent">
+        Quantitative investment is not a new concept, it has developed for 30 years abroad and has been acknowledged by more and more investors.
+        However, it is still rare to see individual investor adopting quantitative strategy in China, actually, some of the investors are new to this concept.
+        This is because most of the investors view quantitative investment as something incomprehensible and are daunted by the convoluted formula and index.
+      </div>
+      <div class="sectContent">
+        Yet with the good performance of quantitative investment these days, investors realized the advantage of quantitative strategy. Also, since this is a new
+        field in China, there are a lot of opportunities and less competition.
+      </div>
+    </div>
+
+    <div class="sect">
+      <div class="sectTitleNumber">2</div>
+      <div class="sectTitle">THE VISION</div>
+      <div class="sectContent">
+        We want to make quantitative strategy available for every <i>individual investors</i> rather than limited to only institutional investors.
+        Users can <i>generate</i> their own quantitative strategy on our website by putting in basic information, or, can <i>buy</i> or <i>sell</i> strategy on our website.
+      </div>
+      <div class="sectContent">
+        Quantitative investment will no longer be something mysterious and abstruse, even user has little knowledge about quantitative investment, he or she
+        can adopt the advanced investment philosophy and technique by using our website.
+      </div>
+    </div>
+
+    <div class="sect grey">
+      <div class="sectTitleNumber">3</div>
+      <div class="sectTitle">THE PROCESS</div>
+      <div class="sectContent">
+        After understanding the needs of users, I drew a <i>flowchart</i> of the typical operations of a user using our website.
+      </div>
+      <a href="img/GPX/demand.jpg" target="_blank"><img class="shadow" src="img/GPX/demand.jpg" alt="Flowchart" /></a>
+      <div class="sectContent">
+        According to the typical operations of a user depicted in the flowchart above, we held several meetings to decide the website structure. Finally, we agreed that
+        our website will consist mainly 5 parts, which are <i>"Home" page</i> that gives user a general idea of our website, <i>"Strategy" page</i> that functions as a platform of buying
+        and selling strategy,  <i>"Generator" page</i> with which user can generate his or her own strategy, <i>"Help" page</i> that provide guidance to new user and <i>"My Account" pages</i>
+        on which user can manage and monitor their strategies.
+      </div>
+      <div class="sectContent">
+        After settling down the website structure, I began to work on <i>prototypes</i>. During the time, I had several discussions with Ling DONG, our front-end developer to decide the layout and animation
+        of elements of our web page. Below are some of the prototypes that we made.
+      </div>
+      <a href="img/GPX/prototype_2.jpg" target="_blank"><img class="shadow" src="img/GPX/prototype_2.jpg" alt="Prototype" /></a>
+      <a href="img/GPX/prototype_1.jpg" target="_blank"><img class="shadow" src="img/GPX/prototype_1.jpg" alt="Prototype" /></a>
+      <a href="img/GPX/prototype_3.jpg" target="_blank"><img class="shadow" src="img/GPX/prototype_3.jpg" alt="Prototype" /></a>
+      <div class="sectContent">
+        Also, I set UI guideline to keep the overall style of our website consistent.
+      </div>
+      <a href="img/GPX/UI%20kit.jpg" target="_blank"><img class="shadow" src="img/GPX/UI%20kit.jpg" alt="UI kit" /></a>
+    </div>
+
+    <div class="sect">
+      <div class="sectTitleNumber">4</div>
+      <div class="sectTitle">THE WEBSITE</div>
+      <div class="sectContent">
+        <b>(1) Log In and Sign Up</b>
+      </div>
+      <!-- Wrapper for carousel -->
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+          <img src="img/GPX/LogIn.jpg" alt="Log In">
+        </div>
+          <div class="item">
+            <img src="img/GPX/SignUp.jpg" alt="Sign Up">
+          </div>
+        </div>
+        <!-- Controls -->
+      </div>
+      <div class="sectContent space">
+        <b>(2) Help</b>
+      </div>
+      <div class="sectContent">
+        New users can get familiar with our website through this page, which includes answers to questions like <i>"What do we do?"</i>, <i>"Why choose us?"</i>, <i>"What can I do with this website?"</i>
+        and <i>"How to use this website?"</i>.
+      </div>
+      <div class="sectContent">
+        I used icons and screen shots to help illustrate. Moreover, I put magnifier around the important buttons so user can see the details clearly and get a direct
+        feeling about how to operate the website.
+      </div>
+      <a href="img/GPX/Help.jpg" target="_blank"><img src="img/GPX/Help.jpg" alt="Help"/></a>
+      <div class="sectContent space">
+        <b>(3) Generator</b>
+      </div>
+      <div class="sectContent">
+        This is page is designed for user to generate his or her own strategy, including input of strategy descriptions and parameters.
+      </div>
+      <div class="sectContent">
+        I used <i>dashboard</i> to present this web page so user can discriminate different sections easily. The challenging part of this web page is the section <i>"High Level Index"</i>. In this section,
+        user is supposed to choose index from index library and set parameters of the chosen index if there is any. Because the index library is multi-level structured, we thought of the file
+         tree layout of windows system, so I divided this section into four parts, which are first level of menu of index, second level of menu of index, menu of chosen index and parameter form of index.
+        Moreover, when user choose an index, there will be an animation of an chosen index floating from the left to the right into the column of chosen-index menu.
+      </div>
+      <a href="img/GPX/Generator.jpg" target="_blank"><img src="img/GPX/Generator.jpg" alt="Generator" /></a>
+      <div class="sectContent space">
+        <b>(4) Strategy Detail</b>
+      </div>
+      <div class="sectContent">
+        On this web page, user is able to see all the details of a strategy and also manage operations of a certain strategy such as "Add Back-test" and "Retrain".
+         This web page includes a lots of elements like <i>forms and charts</i> and requires more <i>interactions</i> with the user compared to the web paged presented above.
+      </div>
+      <div class="sectContent">
+        I strengthened the important functions and numbers using different colors while keeping the color style consistent. Beyond that, in order to help user to gain a better interaction
+        experience, I added <i>animation</i> on the curve graphs like "Yield Curve" and " Position Curve" and on the pie chart, the "Position". When user hover over a curve, the curve will obtain a
+        shadow to make it looks like floating, and when user hover one part of the pie chart, the corresponding legend on the right will enlarge to help user to read the Info of this part.
+      </div>
+      <a href="img/GPX/StrategyDetail.jpg" target="_blank"><img src="img/GPX/StrategyDetail.jpg" alt="Strategy Detail" /></a>
+      <div class="sectContent space">
+        <b>(5) My Account</b>
+      </div>
+      <div class="sectContent">
+        By entering "My Account", user can view his or her own information and strategy information, also, user can manage and operate each strategy and
+        modify settings such as text notices, account binding or password changing.
+      </div>
+      <div class="sectContent">
+        I adopted <i>left navigation menu</i> to cater for most of users' operation habits, as well as improve the efficiency of choosing menu items.
+        This part includes lots of forms and the problem is all about how to present information and how to arrange buttons.
+      </div>
+      <!-- Wrapper for carousel -->
+      <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="false">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel2" data-slide-to="1"></li>
+          <li data-target="#myCarousel2" data-slide-to="2"></li>
+          <li data-target="#myCarousel2" data-slide-to="3"></li>
+          <li data-target="#myCarousel2" data-slide-to="4"></li>
+          <li data-target="#myCarousel2" data-slide-to="5"></li>
+          <li data-target="#myCarousel2" data-slide-to="6"></li>
+          <li data-target="#myCarousel2" data-slide-to="7"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="img/GPX/Account%201.jpg" alt="My Account">
+          </div>
+          <div class="item">
+            <img src="img/GPX/Account%202.jpg" alt="My Account">
+          </div>
+          <div class="item">
+            <img src="img/GPX/Account%203.jpg" alt="My Account">
+          </div>
+          <div class="item">
+            <img src="img/GPX/Account%204.jpg" alt="My Account">
+          </div>
+          <div class="item">
+            <img src="img/GPX/Account%205.jpg" alt="My Account">
+          </div>
+          <div class="item">
+            <img src="img/GPX/Account%206.jpg" alt="My Account">
+          </div>
+          <div class="item">
+            <img src="img/GPX/Account%207.jpg" alt="My Account">
+          </div>
+          <div class="item">
+            <img src="img/GPX/Account%208.jpg" alt="My Account">
+          </div>
+        </div>
+        <!-- Controls -->
+      </div>
+    </div>
+
+    <div class="sect grey">
+      <div class="sectTitleNumber">5</div>
+      <div class="sectTitle">THE FUTURE AND SOME PERSONAL GAINS</div>
+      <p class="sectContent">
+         GPX Trade 2.0 will be on line in January, 2016. We hope that this website can equip investors with new investment philosophy and technique as described in the vision.
+      </p>
+      <p class="sectContent">
+         It is the first time that I work as designer in a company and I learned a lot from my colleagues. At first, it was difficult for me to figure out how to design a website
+        that suffice all the demands, but with the help of Ling DONG (front-end developer) and Tieqi WANG (CEO) who have more experience in website interaction, I gradually learned
+         the way to arrange different elements and adopt different kind of layout to optimize the user experience.
+      </p>
+      <p class="sectContent">
+        Also, it is the first time that I work as designer in a formal team. I learned how to cooperate with other to building a product and how to communicate with colleagues when encounter problems.
+        It was really a great experience working in GPX.
+      </p>
+    </div>
+
+    <div id="footer">
+      <a href="Qianxing.html"><div class="footerPre"><< PRE</div></a>
+      <a href="Annual.html"><div class="footerNext">NEXT >></div></a>
+      <p id="author"> This website is designed and coded by Yunting Liu with the help of Bootstrap and Font Awesome.</p>
+      <p id="copyright">© 2015 Yunting Liu, All Rights Reserved.</p>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- My JQuery -->
+    <script type="text/javascript">
+
+      $(document).ready(function () {
+
+        //slide to the top
+        $("a.backToTop").click(function(e){
+          e.preventDefault();
+          var href = $(this).attr("href");
+          var pos = $(href).offset().top;
+          $("html,body").animate({scrollTop: pos}, 650);
+        });
+
+        //show/hide .myFlagContainer
+        $(".myName img").mouseover(function (e) {
+          e.preventDefault();
+          if( $(window).width() > 1183) {
+            $(".myFlagContainer").slideDown();
+          }
+        }).mouseout(function (e) {
+          e.preventDefault();
+          if( $(window).width() > 1183) {
+            $(".myFlagContainer").slideUp()
+          }
+        });
+
+        //anmiation of a.backToTop animation
+        $(window).scroll(function(e){
+          e.preventDefault();
+          if( $(document).scrollTop() > 0 && $(window).width() > 975 ){
+            $("a.backToTop").slideDown();
+          }
+          else if( $(document).scrollTop() == 0 && $(window).width() > 975 ){
+            $("a.backToTop").slideUp();
+          }
+        });
+
+        //in case someone change the size of window when a.backToTop is in 'slideDown' status
+        $(window).resize(function(e){
+          e.preventDefault();
+          if( $(document).scrollTop() > 0 && $(window).width() <= 975 ){
+            $("a.backToTop").slideUp();
+          }
+        });
+
+      });
+
+    </script>
+
+  </body>
+</html>
