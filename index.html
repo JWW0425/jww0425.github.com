@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
@@ -23,32 +23,8 @@
       body { position: relative; padding-top: 50px; font-family: 'Century Gothic', serif; font-size: 1rem; }
 
       /* loading animation */
-      #loading{ display: none; width: 100%; height: 100%; background-color: white; z-index: 100000; position: fixed; }
-      .spinner{ width: 60px;
-        height: 60px;
-        background-color: #2ca6e0;
-        margin: 240px auto;
-        -webkit-animation: rotateplane 1.2s infinite ease-in-out;
-        animation: rotateplane 1.2s infinite ease-in-out; }
-
-      @-webkit-keyframes rotateplane {
-        0% { -webkit-transform: perspective(120px) }
-        50% { -webkit-transform: perspective(120px) rotateY(180deg) }
-        100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
-      }
-
-      @keyframes rotateplane {
-        0% {
-          transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-          -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
-        } 50% {
-            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-            -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
-          } 100% {
-              transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-              -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-            }
-      }
+      #loading{ display: none; width: 100%; height: 100%; background-color: white; z-index: 100000; position: fixed; text-align: center; }
+      .gif{ width: 500px; margin: 200px auto; }
 
       /*.container{padding-right: 0; padding-left:0; margin-right: 10%; margin-left: 10%;}*/
       .navbar{ border: 0; margin-bottom: 0; }
@@ -97,7 +73,7 @@
       .row { margin-left: 0; margin-right: 0; }
       .myWork { height: 100%;  padding: 10px; position: relative; }
       .myWork a { position: relative; display:block; width: 100%; height: 100%; text-decoration: none; color: #313131; }
-      .myWork img{ width: 100%; }
+      .myWork img{ width: 100%; border: dashed white 1px; }
       .workCover{ position: absolute; opacity: 0; background-color: white;  left: 0; top: 0; width: 100%; height: 100%; padding-top: 33%; }
       .workCover .workTitle{ text-align: center; font-weight: bold; font-size: 1.4rem; }
       .workCover .workDescript{ width: 90%; margin: auto auto; font-size: 1rem; text-align: center; }
@@ -142,7 +118,7 @@
   <body id="home" data-spy="scroll" data-target="#navbar" style="overflow:scroll; overflow-x:hidden" >
 
     <div id="loading">
-      <div class="spinner"></div>
+      <img class="gif" src="img/load.gif" >
     </div>
 
     <nav id="myScrollspy" class="navbar navbar-inverse navbar-fixed-top">
@@ -211,36 +187,36 @@
               <a href="Qianxing.html">
                 <div class="workCover">
                   <p class="workTitle">Qianxing|Website</p>
-                  <p class="workDescript">Web-based rural public welfare activities platform.</p>
+                  <p class="workDescript">Web-based rural public welfare platform.</p>
                 </div>
-                <img src="img/Qianxing/Qianxing3.png" alt="">
+                <img src="img/Qianxing/Qianxing.jpg" alt="">
               </a>
             </div>
             <div class="myWork col-xs-12 col-sm-6 col-md-3 col-lg-3">
               <a href="GPX.html">
                 <div class="workCover">
-                  <p class="workTitle">Qianxing|Website</p>
-                  <p class="workDescript">Web-based rural public welfare activities platform.</p>
+                  <p class="workTitle">GPX|Website</p>
+                  <p class="workDescript">Website for quantitative investment.</p>
                 </div>
-                <img src="img/Qianxing/Qianxing1.jpg" alt="">
+                <img src="img/GPX/GPX.jpg" alt="">
               </a>
             </div>
             <div class="myWork col-xs-12 col-sm-6 col-md-3 col-lg-3">
               <a href="Annual.html">
                 <div class="workCover">
-                  <p class="workTitle">Qianxing|Website</p>
-                  <p class="workDescript">Web-based rural public welfare activities platform.</p>
+                  <p class="workTitle">CAPU|Annual</p>
+                  <p class="workDescript">Design of the 17th annual of CAPU.</p>
                 </div>
-                <img src="img/Qianxing/Qianxing1.jpg" alt="">
+                <img src="img/Annual/Annual.jpg" alt="">
               </a>
             </div>
             <div class="myWork col-xs-12 col-sm-6 col-md-3 col-lg-3">
               <a href="Graphic.html">
                 <div class="workCover">
-                  <p class="workTitle">Qianxing|Website</p>
-                  <p class="workDescript">Web-based rural public welfare activities platform.</p>
+                  <p class="workTitle">Graphic design</p>
+                  <p class="workDescript">Poster, flash, T-shirt and logo design.</p>
                 </div>
-                <img src="img/Qianxing/Qianxing1.jpg" alt="">
+                <img src="img/Graphic/Graphic.jpg" alt="">
               </a>
             </div>
           </div>
@@ -248,7 +224,7 @@
       <div id="about">
         <h1>ABOUT ME</h1>
         <div class="aboutContainer">
-          <p class="aboutText">Hi, my name is <i>Yunting LIU</i>. I’m now an undergraduate in Peking University majoring <i>Computer Science</i> and the lead web designer of <i>GPX</i>, a financial company  aiming to make quantitative investing more convenient.
+          <p class="aboutText">Hi, my name is <i>Yunting Liu</i>. I’m now an undergraduate in Peking University majoring <i>Computer Science</i> and the lead web designer of <i>GPX</i>, a financial company  aiming to make quantitative investing accessible to every investor.
             <br/><br/><i>I love design.</i> Design seems irrelevent to what I'm learning in my major, I learned it simply out of love on my own. I have one year’s experience of graphic design in propaganda department of Cycling Association of Peking University as minister. I also design for university departments, or just for fun.</p>
           <div class="aboutButton" ><a href="test.html">Download my resume</a></div>
         </div>
@@ -262,7 +238,7 @@
               </a>
             </span>
             <span class="contact-square col-xs-12 col-sm-12 col-md-3 col-lg-3" id="linkedin">
-              <a href="https://cn.linkedin.com/pub/yunting-liu/a3/611/126" >
+              <a href="https://cn.linkedin.com/pub/yunting-liu/a3/611/126" target="_blank">
                 <i class="fa fa-linkedin fa-4x"></i>
               </a>
             </span>
@@ -304,6 +280,7 @@
     <!-- My JQuery -->
     <script type="text/javascript">
 
+      //loading animation
       $(document).ready(function() {
         $.ajax();
       });
@@ -311,7 +288,7 @@
         $("#loading").show();
       });
       $(document).ajaxStop(function(){
-        $("#loading").delay(200).fadeOut(500);
+        $("#loading").delay(2500).fadeOut(500);
       });
 
       $(document).ready(function () {

@@ -20,13 +20,8 @@
       body { position: relative; padding-top: 50px; font-family: 'Century Gothic', serif; font-size: 1rem; line-height: 170%; }
 
       /* loading animation */
-      #loading{ display: none; width: 100%; height: 100%; background-color: white; z-index: 100000; position: fixed; }
-      .spinner{ width: 60px;
-        height: 60px;
-        background-color: #2ca6e0;
-        margin: 240px auto;
-        -webkit-animation: rotateplane 1.2s infinite ease-in-out;
-        animation: rotateplane 1.2s infinite ease-in-out; }
+      #loading{ display: none; width: 100%; height: 100%; background-color: white; z-index: 100000; position: fixed; text-align: center; }
+      .gif{ width: 500px; margin: 200px auto; }
 
       /*.container{padding-right: 0; padding-left:0; margin-right: 10%; margin-left: 10%;}*/
       .navbar{ border: 0; margin-bottom: 0; }
@@ -103,7 +98,7 @@
   <body id="top" style="overflow:scroll;overflow-x:hidden" >
 
     <div id="loading">
-      <div class="spinner"></div>
+      <img class="gif" src="img/load.gif" >
     </div>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -220,6 +215,17 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- My JQuery -->
     <script type="text/javascript">
+
+      //loading animation
+      $(document).ready(function() {
+        $.ajax();
+      });
+      $(document).ajaxStart(function(){
+        $("#loading").show();
+      });
+      $(document).ajaxStop(function(){
+        $("#loading").delay(2500).fadeOut(500);
+      });
 
       $(document).ready(function () {
 
