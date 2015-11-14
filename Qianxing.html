@@ -384,17 +384,14 @@
     <script type="text/javascript">
 
       //loading animation
-      $(document).ready(function() {
-        $.ajax();
-      });
-      $(document).ajaxStart(function(){
-        $("#loading").show();
-      });
-      $(document).ajaxStop(function(){
-        $("#loading").delay(2500).fadeOut(500);
-      });
+      //$(document).ready(function() {
+      //  $.ajax();
+      //});
+
 
       $(document).ready(function () {
+
+        $.ajax();
 
         //slide to the top
         $("a.backToTop").click(function(e){
@@ -436,6 +433,13 @@
           }
         });
 
+      });
+
+      $(document).ajaxStart(function(){
+        $("#loading").show();
+      });
+      $(document).ajaxStop(function(){
+        $("#loading").delay(2500).fadeOut(500);
       });
 
     </script>
