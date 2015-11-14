@@ -285,6 +285,16 @@
     <!-- My JQuery -->
     <script type="text/javascript">
 
+      $(document).ready(function() {
+        $.ajax();
+      });
+      $(document).ajaxStart(function(){
+        $("#loading").show();
+      });
+      $(document).ajaxStop(function(){
+        $("#loading").delay(200).fadeOut(500);
+      });
+
       $(document).ready(function () {
 
         $(".homePageText").animate({"opacity": "1"}, 2000);
