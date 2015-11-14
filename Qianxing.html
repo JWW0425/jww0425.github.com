@@ -76,6 +76,9 @@
       .sectContent i { color: #64ABDA; }
       .sect video{ margin-top: 10px; margin-bottom: 10px; }
       .sect iframe{ margin-top: 10px; margin-bottom: 10px; }
+      @media(max-width: 1000px){
+        iframe{ height: 100%; }
+      }
       .sect .tip { font-size: 0.9rem; }
       .sect .tip a { text-decoration: none; color:#64ABDA;  }
       .sect img{ width: 100%; margin-top: 10px; margin-bottom: 10px; }
@@ -384,14 +387,17 @@
     <script type="text/javascript">
 
       //loading animation
-      //$(document).ready(function() {
-      //  $.ajax();
-      //});
-
+      $(document).ready(function() {
+        $.ajax();
+      });
+      $(document).ajaxStart(function(){
+        $("#loading").show();
+      });
+      $(document).ajaxStop(function(){
+        $("#loading").delay(2500).fadeOut(500);
+      });
 
       $(document).ready(function () {
-
-        $.ajax();
 
         //slide to the top
         $("a.backToTop").click(function(e){
@@ -433,13 +439,6 @@
           }
         });
 
-      });
-
-      $(document).ajaxStart(function(){
-        $("#loading").show();
-      });
-      $(document).ajaxStop(function(){
-        $("#loading").delay(2500).fadeOut(500);
       });
 
     </script>
