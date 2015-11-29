@@ -62,14 +62,14 @@
       .myContainer{ width: 100%; }
 
       .homePage{ position: relative; width: 100%; }
-      .homePageText{ color: white; opacity: 0; position: relative; padding: 12% 8.5% 60% 8.5%; font-family: 'Century Gothic',serif; font-size: 1rem; font-weight: 100; }
+      .homePageText{ color: white; opacity: 0; position: relative; padding: 12% 8.5% 15% 8.5%; font-family: 'Century Gothic',serif; font-size: 1rem; font-weight: 100; }
       .homePageText .welcome{ font-family:'Lucida Handwriting', serif; font-weight:normal; font-size: 2.5rem; margin-bottom: 20px; }
-      .pkuLink a{ text-decoration: none; color: #64ABDA; }
+      .pkuLink a{ text-decoration: none; color: white; }
       .pkuLink a:hover{ color: rgb(139, 0, 18); }
 
       #portfolio{ position: relative; width: 100%; font-family: 'Century Gothic',serif; padding-top:60px; }
-      #portfolio h1 { font-family: 'Lucida Handwriting', serif; font-size: 3rem; margin-top: 4%; text-align: center; }
-      .workWrapper{ width: 100%; padding: 3% 8.5% 60% 8.5%; }
+      #portfolio h1 { font-family: 'Lucida Handwriting', serif; font-size: 3rem; margin-top: 4%; text-align: center; color: white; }
+      .workWrapper{ width: 100%; padding: 3% 8.5% 15% 8.5%; }
       .row { margin-left: 0; margin-right: 0; }
       .myWork { height: 100%;  padding: 10px; position: relative; }
       .myWork a { position: relative; display:block; width: 100%; height: 100%; text-decoration: none; color: #313131; }
@@ -78,23 +78,23 @@
       .workCover .workTitle{ text-align: center; font-weight: bold; font-size: 1.4rem; }
       .workCover .workDescript{ width: 90%; margin: auto auto; font-size: 1rem; text-align: center; }
 
-      #about{ position: relative; width: 100%; font-family:'Century Gothic', serif; padding-top:60px; margin-bottom: 60%; }
-      #about h1{  font-family: 'Lucida Handwriting', serif; font-size: 3rem; margin-top: 4%; text-align: center; }
+      #about{ position: relative; width: 100%; font-family:'Century Gothic', serif; padding-top:60px; margin-bottom: 15%; }
+      #about h1{  font-family: 'Lucida Handwriting', serif; font-size: 3rem; margin-top: 4%; text-align: center; color: white; }
       .aboutContainer{ margin: 3% auto 0 auto; }
-      .aboutText{ padding: 0 50% 0 8.5%; line-height: 170%; }
-      .aboutText i{ color: #efefef; }
-      .aboutButton{ margin: 3% 0 0 8.5%;  background-color: #313131; height: 45px; width: 200px; color: white; text-align: center; line-height: 45px; font-size: 0.95rem; }
+      .aboutText{ padding: 0 50% 0 8.5%; line-height: 170%; color: #f6f6f6; }
+      .aboutText .stress{ color: #fffd4f; }
+      .aboutButton{ margin: 3% 0 0 8.5%;  background-color: #313131; height: 45px; width: 200px; color: white; text-align: center; line-height: 41px; font-size: 0.95rem; border: dashed white 1px; }
       .aboutButton a{ text-decoration: none; color: white; }
       .aboutButton a:hover{ font-weight: 600; font-size: 1rem; }
 
       #contact{ position: relative; width: 100%; text-align: center; font-family: 'Lucida Handwriting', serif; padding-top:60px; margin-bottom:2.6%; }
-      #contact h1{ font-size: 3rem; margin-top: 4%; }
-      .contact-list i{ color: #313131; padding-top: 15%; }
+      #contact h1{ font-size: 3rem; margin-top: 4%; color: white; }
+      .contact-list i{ color: white; padding-top: 15%; }
       @media(min-width: 992px){ .contact-list i:hover{ padding-top: 0; padding-bottom: 15%; } }
-      .contact-list .fa-envelope:hover{ color: rgb(255, 248, 173); }
-      .contact-list .fa-linkedin:hover{ color: rgb(157, 217, 255); }
-      .contact-list .fa-google-plus:hover{ color: rgb(255, 156, 254); }
-      .contact-list .fa-weixin:hover{ color: rgb(179, 255, 137); }
+      .contact-list .fa-envelope { color: rgb(255, 248, 173); }
+      .contact-list .fa-linkedin { color: rgb(157, 217, 255); }
+      .contact-list .fa-google-plus { color: rgb(255, 156, 254); }
+      .contact-list .fa-weixin { color: rgb(179, 255, 137); }
       .row.contact-list{ width: 40%; margin: 5% 30% 10% 30%; }
       button.contact-square{ background-color: transparent; border: none; }
       button.contact-square:after{ background-color: transparent; border: none; outline: none; }
@@ -175,7 +175,7 @@
           <p class="welcome">Hi, welcome to my world.</p>
           <p>This is a website built for my portfolio.</p>
           <p>I came from a beautiful seaside town in south of China.</p>
-          <p>Now I'm an undergraduate student in <span class="pkuLink"><a href="http://www.pku.edu.cn/" target="_blank">Peking University.</a></span></p>
+          <p>Now I'm an undergraduate student in <span class="pkuLink"><a href="http://www.pku.edu.cn/" target="_blank"><i>Peking University</i>.</a></span></p>
           <p>I love dreaming.</p>
           <p>I love drawing.</p>
           <p>I love design.</p>
@@ -225,8 +225,8 @@
       <div id="about">
         <h1>ABOUT ME</h1>
         <div class="aboutContainer">
-          <p class="aboutText">Hi, my name is <i>Yunting Liu</i>. I’m now an undergraduate in Peking University majoring <i>Computer Science</i> and the lead web designer of <i>GPX</i>, a finance company aiming to make quantitative investing accessible to every investor.
-            <br/><br/><i>I love design.</i> Though design seems irrelevant to my major, I learned it simply out of love on my own. I had one year’s experience of graphic design in propaganda department of Cycling Association of Peking University as minister. I also designed for university department, student-initiated project, or just for fun.</p>
+          <p class="aboutText">Hi, my name is <span class="stress">Yunting Liu</span>. I’m now an undergraduate in Peking University majoring <span class="stress">Computer Science</span> and the lead web designer of <span class="stress">GPX</span>, a finance company aiming to make quantitative investing accessible to every investor.
+            <br/><br/><span class="stress">I love design.</span> Though design seems irrelevant to my major, I learned it simply out of love on my own. I had one year’s experience of graphic design in propaganda department of Cycling Association of Peking University as minister. I also designed for university department, student-initiated project, or just for fun.</p>
           <div class="aboutButton" ><a href="test.html">Download my resume</a></div>
         </div>
       </div>
