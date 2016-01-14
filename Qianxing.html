@@ -24,25 +24,26 @@
       .gif{ width: 500px; margin: 200px auto; }
 
       /*.container{padding-right: 0; padding-left:0; margin-right: 10%; margin-left: 10%;}*/
+      #curryContainer{ padding-left: 0 !important; padding-right: 0 !important; }
       .navbar{ border: 0; margin-bottom: 0; }
-      .myName{  padding:0 16px; }
+      .myName{  padding:0 13px; }
       .myName img{ height: 50px; }
       /* center the navigate button */
-      @media (min-width: 768px){ .container>.navbar-collapse { width:440px; margin: 0 auto; } }
+      @media (min-width: 768px){ .container>.navbar-collapse { width:508px; margin: 0 auto; } }
       .navbar-inverse{ background-color: #313131; }
       .navbar-inverse .navbar-nav>li>a { color: white; }
       /* navigate button width*/
-      @media (min-width: 768px){ .nav.navbar-nav>li{ width: 110px; text-align: center; } }
+      @media (min-width: 768px){ .nav.navbar-nav>li{ width: 127px; text-align: center; } }
       /* navigate button color (hover/active)*/
       .navbar-inverse .navbar-nav>.navButton>a:hover{ background-color: #64ABDA; }
       .navbar-inverse .navbar-nav>.navButton.active>a{ background-color: #64ABDA; }
 
       /* slideDown logo */
       .myFlagContainer{ display: none; position: fixed; width: 100%; z-index: 1030; }
-      .myFlag{ padding-right: 15px;  padding-left: 8px; margin:0 auto; }
+      .myFlag{ padding-right: 15px;  padding-left: 0; margin:0 auto; }
       /*@media(min-width: 768px){ .myFlag { width: 750px } }
       @media(min-width: 992px){ .myFLag { width: 970px } }*/
-      @media(min-width: 1200px){ .myFlag { width: 1170px } }
+      @media(min-width: 1200px){ .myFlag { width: 1185px } }
       /*.myFlag img{ box-shadow: 1px 2px 1px 1px rgb(56, 92, 105); }*/
 
       /* background and the sun ^_^(fixed) */
@@ -109,7 +110,7 @@
     </div>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="container" id="curryContainer">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
